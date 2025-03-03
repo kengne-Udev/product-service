@@ -137,3 +137,10 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ],
 }
+
+SIMPLE_JWT = {
+    'VERIFYING_KEY': open('public.pem').read(),
+    'ALGORITHM': 'RS256',
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
+
