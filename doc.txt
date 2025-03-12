@@ -5,3 +5,19 @@ pip install djangorestframework pyjwt cryptography
 And generate the following keys
 openssl genrsa -out private.pem 2048
 openssl rsa -in private.pem -outform PEM -pubout -out public.pem
+
+from jwcrypto import jwk
+
+key = jwk.JWK.generate(kty='RSA', size=2048, alg='RSA-OAEP-256', use='enc', kid='12345')
+public_key = key.export_public()
+private_key = key.export_private()
+
+
+{
+    "kty": "RSA",
+    "alg": "RSA-OAEP-256",
+    "kid": "12345",
+    "use": "enc",
+    "e": "AQAB",
+    "n": "0YclBn...vV7y7w"
+}
